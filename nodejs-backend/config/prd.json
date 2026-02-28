@@ -1,0 +1,64 @@
+{
+    "host": "localhost",
+    "projectName" : "stable1",
+    "clientUrl": "http://localhost:3000",
+    "env": "prd",
+    "port": 4030,
+    "paginate": {
+        "default": 1000,
+        "max": 5000
+    },
+    "mongodb": "mongodb://localhost:27017/stable1-prd",
+    "releasesFolder": "releases",
+    "resourcesFolder": "resources",
+    "passwordReset": {
+        "tokenExpiresIn": "30m",
+        "requestIntervalInMinutes": 5
+    },
+    "verifyEmail": {
+        "tokenExpiresIn": "1d",
+        "requestIntervalInMinutes": 1
+    },
+    "public": "../public/",
+    "authentication": {
+        "entity": "user",
+        "service": "users",
+        "secret": "7231dda9f750b130953d7d86849fb776e81da6dbca1d38560e0347d32bb5bd54ae2c50f909874a8d0522cb7a74f8e74f",
+        "authStrategies": ["jwt", "local"],
+        "jwtOptions": {
+            "header": {
+                "type": "access"
+            },
+            "audience": "http://localhost:3000",
+            "issuer": "Code Bridge Sdn Bhd",
+            "algorithm": "HS256",
+            "expiresIn": "1d"
+        },
+        "local": {
+            "usernameField": "email",
+            "passwordField": "password"
+        },
+        "oauth": {
+            "redirect": "/",
+            "auth0": {
+                "key": "<auth0 oauth key>",
+                "secret": "<auth0 oauth secret>",
+                "subdomain": "<auth0 subdomain>",
+                "scope": ["profile", "openid", "email"]
+            }
+        }
+    },
+    "redis": {
+        "host": "localhost",
+        "port": 6379
+    },
+    "passwordPolicy": {
+        "minLength": 6,
+        "maxLength": 128,
+        "uppercase": true,
+        "lowercase": true,
+        "digits": true,
+        "symbols": true,
+        "prohibited": true
+    }
+}
